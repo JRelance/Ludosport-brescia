@@ -1,0 +1,592 @@
+/* =========================================================
+   LudoSport Brescia — Design System
+   Void / Panel / Blade Cyan / Blade Ember / Parchment / Steel
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --void: #0a0e17;
+  --panel: #141b2c;
+  --panel-2: #1b2436;
+  --cyan: #3fe1d0;
+  --ember: #ff5a3c;
+  --parchment: #edeae2;
+  --steel: #8891a3;
+  --line: rgba(237, 234, 226, 0.1);
+
+  --display: 'Rajdhani', sans-serif;
+  --body: 'Work Sans', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--void);
+  color: var(--parchment);
+  font-family: var(--body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.4em;
+}
+
+h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 1.02; }
+h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+h3 { font-size: 1.3rem; }
+
+p { color: var(--steel); max-width: 60ch; }
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- Header / Nav ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.5rem;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo .spark {
+  width: 8px; height: 8px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 10px 2px var(--cyan);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0; padding: 0;
+}
+
+.nav-links a {
+  position: relative;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--parchment);
+  padding-bottom: 4px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  height: 2px;
+  width: 0;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+  transition: width 0.25s ease;
+}
+
+.nav-links a:nth-child(even)::after { background: var(--ember); box-shadow: 0 0 8px var(--ember); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+.nav-cta {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: var(--cyan);
+  color: var(--void);
+  padding: 0.55rem 1.1rem;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+/* Hamburger icon (tre linee -> X quando aperto) */
+.nav-toggle {
+  display: none;
+  position: relative;
+  width: 40px; height: 40px;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 60;
+}
+
+.nav-toggle span {
+  position: absolute;
+  left: 10px; right: 10px;
+  height: 2px;
+  background: var(--parchment);
+  transition: transform 0.25s ease, opacity 0.25s ease, top 0.25s ease;
+}
+
+.nav-toggle span:nth-child(1) { top: 13px; }
+.nav-toggle span:nth-child(2) { top: 19px; }
+.nav-toggle span:nth-child(3) { top: 25px; }
+
+.nav-toggle.open span:nth-child(1) { top: 19px; transform: rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { top: 19px; transform: rotate(-45deg); }
+
+@media (max-width: 780px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+
+  /* Overlay full-screen in stile app: non un dropdown, ma un pannello a tutto schermo */
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: fixed;
+    inset: 0;
+    top: 0;
+    background: var(--void);
+    z-index: 55;
+    padding: 6.5rem 1.8rem 2rem;
+    overflow-y: auto;
+  }
+
+  .nav-links.open a {
+    font-family: var(--display);
+    font-size: 1.7rem;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-links.open a::after { display: none; }
+
+  .nav-links.open li:nth-child(odd) a { color: var(--cyan); }
+  .nav-links.open li:nth-child(even) a { color: var(--parchment); }
+}
+
+/* ---------- Clash divider (signature motif) ---------- */
+
+.clash-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan) 45%, var(--ember) 55%, transparent);
+  opacity: 0.6;
+  margin: 0;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0 6rem;
+  isolation: isolate;
+}
+
+.hero::before, .hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero::before {
+  background: linear-gradient(135deg, rgba(63,225,208,0.18), transparent 55%);
+}
+
+.hero::after {
+  background: linear-gradient(315deg, rgba(255,90,60,0.14), transparent 55%);
+}
+
+.hero-seam {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(180deg, var(--cyan), var(--ember));
+  opacity: 0.5;
+  transform: translateX(-50%) rotate(8deg);
+  transform-origin: top;
+  z-index: -1;
+}
+
+.hero-inner { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+
+.hero .eyebrow { display: block; margin-bottom: 1rem; }
+
+.hero p.lede {
+  font-size: 1.1rem;
+  color: var(--parchment);
+  opacity: 0.85;
+  margin-top: 1.2rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.2rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.9rem 1.6rem;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary { background: var(--ember); color: var(--void); font-weight: 500; }
+.btn-primary:hover { box-shadow: 0 0 24px rgba(255,90,60,0.45); transform: translateY(-1px); }
+
+.btn-ghost { border-color: var(--line); color: var(--parchment); }
+.btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+
+/* ---------- Sections ---------- */
+
+section { padding: 5rem 0; }
+section .eyebrow { margin-bottom: 0.6rem; display: block; }
+section > .container > h2 { margin-bottom: 1rem; }
+.section-intro { margin-bottom: 3rem; }
+
+.panel-alt { background: var(--panel); }
+
+/* ---------- Orders / Cards grid ---------- */
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 860px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .grid-3 { grid-template-columns: 1fr; } }
+
+.card {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1.6rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover { border-color: var(--cyan); transform: translateY(-3px); }
+
+.card .num {
+  font-family: var(--mono);
+  color: var(--ember);
+  font-size: 0.8rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.card p { font-size: 0.92rem; margin-bottom: 0; }
+
+/* ---------- Stats row (mono/data feel) ---------- */
+
+.stats {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.stat .value {
+  font-family: var(--display);
+  font-size: 2.2rem;
+  color: var(--cyan);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat .label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--steel);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- Gallery ---------- */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+@media (max-width: 780px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--panel-2);
+}
+
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.gallery-item:hover img { transform: scale(1.06); }
+
+.gallery-item .caption {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 0.6rem 0.8rem;
+  background: linear-gradient(0deg, rgba(10,14,23,0.9), transparent);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--parchment);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.gallery-item:hover .caption { opacity: 1; }
+
+.filter-bar {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--steel);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+  color: var(--void);
+  background: var(--cyan);
+  border-color: var(--cyan);
+}
+
+/* ---------- Forms ---------- */
+
+.form-grid { display: grid; gap: 1.2rem; max-width: 560px; }
+
+label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--steel);
+  margin-bottom: 0.5rem;
+}
+
+input, textarea, select {
+  width: 100%;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  color: var(--parchment);
+  font-family: var(--body);
+  font-size: 0.95rem;
+  padding: 0.8rem 0.9rem;
+  border-radius: 3px;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid var(--cyan);
+  outline-offset: 1px;
+  border-color: var(--cyan);
+}
+
+/* ---------- Steps list ---------- */
+
+.steps { display: grid; gap: 1.4rem; }
+
+.step { display: flex; gap: 1.2rem; align-items: flex-start; }
+
+.step .num {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ember);
+  min-width: 2.4rem;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 3rem 0 2rem;
+  color: var(--steel);
+}
+
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-grid h3 { font-size: 1rem; color: var(--parchment); }
+
+.social-links { display: flex; gap: 1rem; }
+
+.social-links a {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  border: 1px solid var(--line);
+  padding: 0.5rem 0.9rem;
+  border-radius: 20px;
+}
+
+.social-links a:hover { border-color: var(--cyan); color: var(--cyan); }
+
+.fine-print {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--steel);
+  border-top: 1px solid var(--line);
+  padding-top: 1.5rem;
+}
+
+/* ---------- Reveal on scroll ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* ---------- Status badge (pallino + testo, es. "Iscrizioni aperte") ---------- */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  padding: 0.5rem 1rem 0.5rem 0.7rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--parchment);
+}
+
+.status-badge .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #3fe17e;
+  box-shadow: 0 0 8px #3fe17e;
+}
+
+/* ---------- List cards ("quadrettoni") — righe di classifica/elenco ---------- */
+
+.list-cards {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.list-card-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.1rem 1.3rem;
+  transition: border-color 0.2s ease;
+}
+
+.list-card-row:hover { border-color: var(--cyan); }
+
+.list-card-row .rank {
+  font-family: var(--mono);
+  font-weight: 500;
+  color: var(--ember);
+  min-width: 2.4rem;
+}
+
+.list-card-row .name {
+  flex: 1;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.list-card-row .meta {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--cyan);
+  white-space: nowrap;
+}
+
+/* ---------- Page hero (interior pages) ---------- */
+
+.page-hero {
+  padding: 3.5rem 0 3rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.page-hero .eyebrow { display: block; margin-bottom: 0.8rem; }

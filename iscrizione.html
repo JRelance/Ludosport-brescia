@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iscriviti — LudoSport Brescia</title>
+<meta name="description" content="Prenota una lezione di prova gratuita con LudoSport Brescia. Scopri come funziona l'iscrizione, cosa serve e i prossimi orari disponibili.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="logo"><span class="spark"></span>LudoSport Brescia</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="iscrizione.html">Iscriviti</a></li>
+      <li><a href="galleria.html">Galleria</a></li>
+      <li><a href="contatti.html">Contatti</a></li>
+    </ul>
+    <a href="iscrizione.html" class="nav-cta">Prova gratuita</a>
+    <button class="nav-toggle" aria-label="Apri menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<div class="clash-divider"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Entra in sala</span>
+    <h1>La prima prova è gratuita.</h1>
+    <p class="lede">Bastano vestiti comodi e scarpe da ginnastica. Le spade e l'attrezzatura le mettiamo noi.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="grid-3" style="align-items:start;">
+      <div style="grid-column: span 2;" class="reveal">
+        <span class="eyebrow">Come funziona</span>
+        <h2>Tre passaggi, un'ora di allenamento</h2>
+        <div class="steps" style="margin-top:2rem;">
+          <div class="step">
+            <span class="num">01</span>
+            <div>
+              <h3>Prenota il tuo posto</h3>
+              <p>Compila il modulo qui sotto o scrivici direttamente: ti rispondiamo con giorno e orario del prossimo corso aperto alle prove.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="num">02</span>
+            <div>
+              <h3>Vieni in sala</h3>
+              <p>Ti aspettiamo con abbigliamento sportivo. Fai un riscaldamento guidato e le prime prese di contatto con la spada.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="num">03</span>
+            <div>
+              <h3>Il primo assalto</h3>
+              <p>In coppia con un istruttore, provi i primi scambi in sicurezza. Alla fine decidi se continuare con noi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <span class="num">Info utili</span>
+        <h3>Cosa serve</h3>
+        <p>Scarpe da ginnastica pulite, abbigliamento comodo, tanta voglia di muoverti. Età minima consigliata: 12 anni.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel-alt">
+  <div class="container">
+    <div class="section-intro reveal">
+      <span class="eyebrow">Prenota ora</span>
+      <h2>Lasciaci i tuoi dati</h2>
+      <p>Ti ricontattiamo entro pochi giorni per fissare la tua prova gratuita.</p>
+    </div>
+
+    <!--
+      NOTA PER FRANCESCO:
+      Questo form usa "mailto" come soluzione temporanea a costo zero: apre il client
+      email dell'utente con i dati precompilati. Quando saremo su Netlify possiamo
+      sostituirlo in 5 minuti con Netlify Forms, che raccoglie le iscrizioni in una
+      dashboard senza bisogno di alcun server.
+    -->
+    <form class="form-grid reveal" action="mailto:info@ludosportbrescia.it" method="post" enctype="text/plain">
+      <div>
+        <label for="nome">Nome e cognome</label>
+        <input type="text" id="nome" name="nome" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="eta">Fascia d'età</label>
+        <select id="eta" name="eta">
+          <option>12–17 anni</option>
+          <option>18–30 anni</option>
+          <option>31–50 anni</option>
+          <option>50+ anni</option>
+        </select>
+      </div>
+      <div>
+        <label for="messaggio">Note (opzionale)</label>
+        <textarea id="messaggio" name="messaggio" rows="4"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Invia richiesta →</button>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>LudoSport Brescia</h3>
+        <p>Scuola locale di scherma coreografica con spade luminose.</p>
+      </div>
+      <div>
+        <h3>Seguici</h3>
+        <div class="social-links">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="fine-print">© 2026 LudoSport Brescia — Sito gestito dalla community.</div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

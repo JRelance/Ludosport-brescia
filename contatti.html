@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contatti — LudoSport Brescia</title>
+<meta name="description" content="Dove si allena LudoSport Brescia, orari e contatti social.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="logo"><span class="spark"></span>LudoSport Brescia</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="iscrizione.html">Iscriviti</a></li>
+      <li><a href="galleria.html">Galleria</a></li>
+      <li><a href="contatti.html">Contatti</a></li>
+    </ul>
+    <a href="iscrizione.html" class="nav-cta">Prova gratuita</a>
+    <button class="nav-toggle" aria-label="Apri menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<div class="clash-divider"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Dove trovarci</span>
+    <h1>Sala, orari e contatti.</h1>
+    <p class="lede">Scrivici per qualsiasi domanda, anche prima di prenotare una prova.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="grid-3" style="grid-template-columns: 1fr 1fr;">
+
+      <div class="reveal">
+        <span class="eyebrow">Sala d'allenamento</span>
+        <h2>Indirizzo</h2>
+        <p><!-- NOTA: sostituisci con l'indirizzo reale della sala -->
+        Via [inserire indirizzo], Brescia (BS)</p>
+
+        <span class="eyebrow" style="margin-top:2rem; display:block;">Orari</span>
+        <h2>Quando ci alleniamo</h2>
+        <p style="font-family: var(--mono); font-size: 0.9rem;">
+          Martedì — 20:00 / 22:00<br>
+          Giovedì — 20:00 / 22:00
+        </p>
+
+        <span class="eyebrow" style="margin-top:2rem; display:block;">Social</span>
+        <div class="social-links" style="margin-top:1rem;">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <span class="num">Scrivici</span>
+        <h3>Un messaggio diretto</h3>
+        <!--
+          NOTA PER FRANCESCO: come nella pagina iscrizione, sostituiremo
+          questo "mailto" con Netlify Forms una volta online.
+        -->
+        <form class="form-grid" action="mailto:info@ludosportbrescia.it" method="post" enctype="text/plain" style="margin-top:1.5rem;">
+          <div>
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div>
+            <label for="messaggio">Messaggio</label>
+            <textarea id="messaggio" name="messaggio" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Invia →</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>LudoSport Brescia</h3>
+        <p>Scuola locale di scherma coreografica con spade luminose.</p>
+      </div>
+      <div>
+        <h3>Seguici</h3>
+        <div class="social-links">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="fine-print">© 2026 LudoSport Brescia — Sito gestito dalla community.</div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

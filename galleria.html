@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galleria — LudoSport Brescia</title>
+<meta name="description" content="Foto degli allenamenti, degli assalti e degli eventi di LudoSport Brescia.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="logo"><span class="spark"></span>LudoSport Brescia</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="iscrizione.html">Iscriviti</a></li>
+      <li><a href="galleria.html">Galleria</a></li>
+      <li><a href="contatti.html">Contatti</a></li>
+    </ul>
+    <a href="iscrizione.html" class="nav-cta">Prova gratuita</a>
+    <button class="nav-toggle" aria-label="Apri menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<div class="clash-divider"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Momenti di sala</span>
+    <h1>Allenamenti, assalti, eventi.</h1>
+    <p class="lede">Le foto sono organizzate per categoria. Passa il mouse (o tocca su mobile) per vedere la didascalia.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="tutti">Tutti</button>
+      <button class="filter-btn" data-filter="allenamenti">Allenamenti</button>
+      <button class="filter-btn" data-filter="assalti">Assalti</button>
+      <button class="filter-btn" data-filter="eventi">Eventi</button>
+    </div>
+
+    <!--
+      NOTA PER FRANCESCO:
+      Per aggiungere una foto: copia un blocco ".gallery-item", cambia il percorso
+      dell'immagine in "assets/", il testo della didascalia e "data-category"
+      (allenamenti / assalti / eventi). Non serve toccare altro.
+    -->
+    <div class="gallery-grid reveal">
+
+      <div class="gallery-item" data-category="allenamenti">
+        <img src="assets/placeholder-1.jpg" alt="Allenamento in sala, esercizio a coppie" loading="lazy">
+        <div class="caption">Allenamento settimanale — Sala Brescia</div>
+      </div>
+
+      <div class="gallery-item" data-category="assalti">
+        <img src="assets/placeholder-2.jpg" alt="Assalto tra due atleti con spade luminose" loading="lazy">
+        <div class="caption">Assalto dimostrativo</div>
+      </div>
+
+      <div class="gallery-item" data-category="eventi">
+        <img src="assets/placeholder-3.jpg" alt="Evento pubblico della community LudoSport Brescia" loading="lazy">
+        <div class="caption">Evento in piazza</div>
+      </div>
+
+      <div class="gallery-item" data-category="allenamenti">
+        <img src="assets/placeholder-4.jpg" alt="Riscaldamento di gruppo prima dell'allenamento" loading="lazy">
+        <div class="caption">Riscaldamento di gruppo</div>
+      </div>
+
+      <div class="gallery-item" data-category="assalti">
+        <img src="assets/placeholder-5.jpg" alt="Fase tecnica di un assalto in sala" loading="lazy">
+        <div class="caption">Fase tecnica — allenamento assalti</div>
+      </div>
+
+      <div class="gallery-item" data-category="eventi">
+        <img src="assets/placeholder-6.jpg" alt="Foto di gruppo della community dopo un evento" loading="lazy">
+        <div class="caption">Foto di gruppo</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>LudoSport Brescia</h3>
+        <p>Scuola locale di scherma coreografica con spade luminose.</p>
+      </div>
+      <div>
+        <h3>Seguici</h3>
+        <div class="social-links">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="fine-print">© 2026 LudoSport Brescia — Sito gestito dalla community.</div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
