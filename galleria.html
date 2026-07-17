@@ -44,44 +44,52 @@
     </div>
 
     <!--
-      NOTA PER FRANCESCO:
-      Per aggiungere una foto: copia un blocco ".gallery-item", cambia il percorso
-      dell'immagine in "assets/", il testo della didascalia e "data-category"
-      (allenamenti / assalti / eventi). Non serve toccare altro.
+      NOTA PER FRANCESCO: questa griglia non si modifica più a mano.
+      Le foto arrivano automaticamente da /admin — carica lì, il sito si aggiorna da solo.
     -->
-    <div class="gallery-grid reveal">
-
-      <div class="gallery-item" data-category="allenamenti">
-        <img src="assets/placeholder-1.jpg" alt="Allenamento in sala, esercizio a coppie" loading="lazy">
-        <div class="caption">Allenamento settimanale — Sala Brescia</div>
-      </div>
-
-      <div class="gallery-item" data-category="assalti">
-        <img src="assets/placeholder-2.jpg" alt="Assalto tra due atleti con spade luminose" loading="lazy">
-        <div class="caption">Assalto dimostrativo</div>
-      </div>
-
-      <div class="gallery-item" data-category="eventi">
-        <img src="assets/placeholder-3.jpg" alt="Evento pubblico della community LudoSport Brescia" loading="lazy">
-        <div class="caption">Evento in piazza</div>
-      </div>
-
-      <div class="gallery-item" data-category="allenamenti">
-        <img src="assets/placeholder-4.jpg" alt="Riscaldamento di gruppo prima dell'allenamento" loading="lazy">
-        <div class="caption">Riscaldamento di gruppo</div>
-      </div>
-
-      <div class="gallery-item" data-category="assalti">
-        <img src="assets/placeholder-5.jpg" alt="Fase tecnica di un assalto in sala" loading="lazy">
-        <div class="caption">Fase tecnica — allenamento assalti</div>
-      </div>
-
-      <div class="gallery-item" data-category="eventi">
-        <img src="assets/placeholder-6.jpg" alt="Foto di gruppo della community dopo un evento" loading="lazy">
-        <div class="caption">Foto di gruppo</div>
-      </div>
-
+    <div id="gallery-grid" class="gallery-grid reveal">
+      <p id="gallery-empty" style="display:none; color: var(--steel); font-family: var(--mono); font-size: 0.85rem;">
+        Nessuna foto ancora. Vai su <a href="/admin/" style="color: var(--cyan);">/admin</a> per caricarne una.
+      </p>
     </div>
+
+    <script>
+      // Carica le foto dal file gestito dal pannello di amministrazione
+      fetch('content/gallery.json')
+        .then(res => res.json())
+        .then(data => {
+          const grid = document.getElementById('gallery-grid');
+          const photos = data.photos || [];
+          if (!photos.length) {
+            document.getElementById('gallery-empty').style.display = 'block';
+            return;
+          }
+          grid.innerHTML = photos.map(p => `
+            <div class="gallery-item" data-category="${p.category || 'eventi'}">
+              <img src="${p.image}" alt="${p.caption || 'Foto LudoSport Brescia'}" loading="lazy">
+              <div class="caption">${p.caption || ''}</div>
+            </div>
+          `).join('');
+
+          // Riattiva il filtro per categoria sulle foto appena caricate
+          const filterBtns = document.querySelectorAll('.filter-btn');
+          const items = grid.querySelectorAll('.gallery-item');
+          filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+              filterBtns.forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+              const filter = btn.dataset.filter;
+              items.forEach(item => {
+                const match = filter === 'tutti' || item.dataset.category === filter;
+                item.style.display = match ? '' : 'none';
+              });
+            });
+          });
+        })
+        .catch(() => {
+          document.getElementById('gallery-empty').style.display = 'block';
+        });
+    </script>
   </div>
 </section>
 
@@ -95,8 +103,9 @@
       <div>
         <h3>Seguici</h3>
         <div class="social-links">
-          <a href="#">Instagram</a>
-          <a href="#">Facebook</a>
+          <a href="https://www.instagram.com/ludosport.brescia/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.facebook.com/ludosport.brescia/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://t.me/+PhyHLvKvjcgxZmQ0" target="_blank" rel="noopener">Telegram</a>
         </div>
       </div>
     </div>

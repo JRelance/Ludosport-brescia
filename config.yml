@@ -1,0 +1,32 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/gallery"
+public_folder: "/assets/gallery"
+
+locale: "it"
+
+collections:
+  - name: "gallery"
+    label: "Galleria foto"
+    files:
+      - name: "gallery"
+        label: "Foto della galleria"
+        file: "content/gallery.json"
+        fields:
+          - label: "Foto"
+            name: "photos"
+            widget: "list"
+            label_singular: "Foto"
+            summary: "{{fields.caption}} — {{fields.category}}"
+            fields:
+              - {label: "Immagine", name: "image", widget: "image"}
+              - {label: "Didascalia", name: "caption", widget: "string", required: false}
+              - label: "Categoria"
+                name: "category"
+                widget: "select"
+                options:
+                  - {label: "Allenamenti", value: "allenamenti"}
+                  - {label: "Assalti", value: "assalti"}
+                  - {label: "Eventi", value: "eventi"}
